@@ -13,7 +13,10 @@ def sent_analyzer():
     response = sentiment_analyzer(text_to_analyze)
     label = response['label']
     score = response['score']
-    return "The given text has been identified as {} with a score of {}.".format(label.split('_')[1], score)
+    if label is None:
+        return "Invalid input! Try again."
+    else:
+        return "The given text has been identified as {} with a score of {}.".format(label.split('_')[1], score)
 
 # This function initiates the rendering of the main application
 # page over the Flask channel
